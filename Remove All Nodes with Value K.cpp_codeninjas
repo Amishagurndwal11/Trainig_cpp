@@ -1,0 +1,16 @@
+Node *removeNodes(Node *head, int k) {
+    // Write your code here.
+    Node *previous = new Node(0);
+    previous->next=head;
+    Node* current =previous;
+
+    while(current->next !=NULL){
+        if(current->next->data == k){
+            current->next = current->next->next;
+        }
+        else{
+            current = current->next;
+        }
+    }
+    return previous->next;
+}
