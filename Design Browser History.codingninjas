@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+class Browser
+{
+    public:
+    vector<string>history;
+    int position;
+    Browser( string& homepage) {
+        // Start with the homepage
+        history.push_back(homepage);
+        position = 0;
+        
+    }
+
+    void visit(string &url)
+   {
+        history.erase(history.begin()+position+1,history.end());
+        history.push_back(url);
+        position++;
+   }
+    
+
+    string back(int steps)
+    {
+        position = max(position - steps, 0);
+        return history[position];
+    }
+
+    
+    string forward(int steps) {
+       
+        position = min(position + steps, (int)history.size() - 1);
+        return history[position];
+    }
+};
